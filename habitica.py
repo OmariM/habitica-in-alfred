@@ -1,4 +1,24 @@
 import request, json
+from enum import Enum
+
+## Enums
+class Attribute(Enum):
+        STR = 'str'
+        INT = 'int'
+        PER = 'per'
+        CON = 'con'
+
+class Priority(Enum):
+        TRIVIAL = 0.1
+        EASY = 1
+        MEDIUM = 1.5
+        HARD = 2
+
+class Frequency(Enum):
+        DAILY = 'daily'
+        WEEKLY = 'weekly'
+        MONTHLY = 'monthly'
+        YEARLY = 'yearly'
 
 ## Networking Constants
 
@@ -16,10 +36,14 @@ auth_dict = {
         "x-client": CLIENT_HEADER
 }
 
+# Tags
+# TODO: make this persistent in alfred
+tags_dict = {
+    'work': 'ff6be87c-6b82-42e2-90e5-e959c729c86b'
+}
 ## Make task class
 
-## instance variables
 
+## Make user class
 
-
-## Make 
+## Make subtask class
