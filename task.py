@@ -1,17 +1,24 @@
 import json
+from dataclasses import dataclass
 
+@dataclass
 class Task:
-    def __init__(self, task_json):
-        self._id = task_json['_id']
-        self.text = task_json['text']
-        self.tags = task_json['tags']
-        self.checklist = task_json['checklist']
-        self.json = json.dumps(task_json)
+    text: str
+    type: str = 'todo'
+    _id: str = None
 
-    def format_for_alfred(self):
+    def to_json(self) -> str:
+        return json.dumps(self, default=lambda x: {k:v for (k,v) in x.__dict__.items() if v is not None})
+
+    def from_dict(task_dict):
+        return Task(task_dict['text'],
+                    task_dict['type'],
+                    task_dict['_id'])
+
+    def to_alfred_list_item(self, arg = None):
         return {
             'title': self.text,
-            'subtitle':'select to complete' if len(self.checklist) == 0 else 'show checklist',
-            'arg': self.json,
+            'subtitle':'select to complete',
+            'arg': arg if arg is not None else self.to_json(),
             'autocomplete': self.text
         }
