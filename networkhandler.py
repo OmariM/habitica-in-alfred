@@ -1,6 +1,6 @@
 import json, requests, sys
 import urls, constants
-from task import Task
+from task import Task, ChecklistItem
 
 
 def create_task(task_name):
@@ -15,3 +15,7 @@ def get_tasks():
     tasks_response = requests.get(urls.GET_TASKS_URL, headers=constants.auth_dict, params={'type':'todos'})
     tasks_list = [Task.from_dict(t) for t in tasks_response.json()['data']]
     return tasks_list
+
+def add_checklist_item_to_task(item, task):
+    item_dict = item.to_json()
+    return requests.post(urls.ADD_CHECKLIST_ITEM_URL.format(task._id), headers=constants.auth_dict, json=item_dict)

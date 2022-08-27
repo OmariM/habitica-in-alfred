@@ -19,7 +19,7 @@ class ChecklistItem:
         '''
         return ChecklistItem(checklist_item_dict['text'],
                              checklist_item_dict['completed'],
-                             checklist_item_dict['_id'])
+                             checklist_item_dict.setdefault('id', None))
 
     def to_alfred_list_item(self, arg = None):
         '''
@@ -67,8 +67,8 @@ class Task:
         '''
         return Task(task_dict['text'],
                     task_dict['type'],
-                    task_dict['_id'],
-                    task_dict['checklist'])
+                    task_dict.setdefault('_id', None),
+                    task_dict.setdefault('checklist', None))
 
     def to_alfred_list_item(self, arg = None):
         '''
