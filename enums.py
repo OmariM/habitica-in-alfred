@@ -1,3 +1,5 @@
+from enum import Enum
+
 class Attribute(Enum):
         STR = 'str'
         INT = 'int'
