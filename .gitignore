@@ -130,3 +130,6 @@ dmypy.json
 
 # no swap files
 *.swp
+
+# no .DS_Store
+.DS_Store
