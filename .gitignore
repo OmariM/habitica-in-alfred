@@ -133,3 +133,6 @@ dmypy.json
 
 # no .DS_Store
 .DS_Store
+
+# don't upload your api token lmao
+secrets.py
