@@ -53,7 +53,8 @@ class Task:
     checklist: [ChecklistItem] = None
 
     def __post_init__(self):
-        self.checklist = [self.checklist] if type(self.checklist) is not list else self.checklist
+        if self.checklist is not None:
+            self.checklist = [self.checklist] if self.checklist is not list and self.checklist is not None else self.checklist
 
     def to_json(self) -> str:
         '''
