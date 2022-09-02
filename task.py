@@ -46,6 +46,7 @@ class Task:
         type (str): the type of task
         _id (str): the id of the task
         checklist (list): a list of checklist objects
+        arg (str): the arg to be passed onto as the input in alfred
     '''
     text: str
     type: str = 'todo'
