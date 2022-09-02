@@ -7,7 +7,7 @@ def create_task(task_name) -> str:
     notif_string = f'task \'{task_name}\' created' if response.status_code == requests.codes.created else f'{response.status_code} Error\n{response.reason}'
     sys.stderr.write(response.text)
     sys.stdout.write(notif_string)
-
+    
 def score_task(task_json) -> str:
     task = Task.from_dict(json.loads(task_json))
     response = networkhandler.score_task(task)
