@@ -52,7 +52,7 @@ class Task:
     type: str = 'todo'
     _id: str = None
     checklist: [ChecklistItem] = None
-    arg: None
+    arg: str = None
 
     def __post_init__(self):
         self.checklist = [self.checklist] if self.checklist is not list and self.checklist is not None else self.checklist
