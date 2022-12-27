@@ -52,11 +52,9 @@ class Task:
     type: str = 'todo'
     _id: str = None
     checklist: [ChecklistItem] = None
-    arg: str = None
 
     def __post_init__(self):
         self.checklist = [self.checklist] if self.checklist is not list and self.checklist is not None else self.checklist
-        self.arg = arg if arg is not None else self.to_json()
 
     def to_json(self) -> str:
         '''
@@ -73,7 +71,7 @@ class Task:
                     task_dict.setdefault('_id', None),
                     task_dict.setdefault('checklist', None))
 
-    def to_alfred_list_item(self, arg = arg):
+    def to_alfred_list_item(self):
         '''
         Returns a dictionary representation of an alfred list item for this task
 
@@ -83,6 +81,6 @@ class Task:
         return {
             'title': self.text,
             'subtitle':'select to complete',
-            'arg': arg,
+            'arg': self.to_json(),
             'autocomplete': self.text
         }

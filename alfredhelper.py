@@ -2,6 +2,13 @@ import json, sys, requests
 import networkhandler
 from task import Task, ChecklistItem
 
+def make_task_option(name) -> dict:
+    return { 'title': name, 'arg': name, 'autocomplete': name}
+
+task_options = [
+    make_task_option('complete task')
+]
+
 def create_task(task_name) -> str:
     response = networkhandler.create_task(task_name)
     notif_string = f'task \'{task_name}\' created' if response.status_code == requests.codes.created else f'{response.status_code} Error\n{response.reason}'

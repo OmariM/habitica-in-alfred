@@ -1,0 +1,3 @@
+from alfredhelper import task_options
+
+task_options
