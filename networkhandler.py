@@ -17,5 +17,5 @@ def get_tasks():
     return tasks_list
 
 def add_checklist_item_to_task(item, task):
-    item_dict = item.to_json()
+    item_dict = {k:v for (k,v) in item.__dict__.items() if v is not None}
     return requests.post(urls.ADD_CHECKLIST_ITEM_URL.format(task._id), headers=constants.auth_dict, json=item_dict)

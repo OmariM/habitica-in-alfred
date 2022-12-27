@@ -1,3 +1,4 @@
+#!python
 import json, sys, requests
 import networkhandler
 from task import Task, ChecklistItem
